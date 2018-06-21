@@ -1,0 +1,46 @@
+import javax.swing.*; 
+import java.awt.event.*;
+public class helloGui extends JFrame {
+	private JPanel panel;private JLabel messageLabel; private JTextField kiloTextField; 
+	private JButton calc; private final int WINDOW_LENGTH = 400; private final int WINDOW_HEIGHT=300; 
+	
+	public helloGui() {
+		final int WINDOW_LENGTH = 310; 
+		final int WINDOW_HEIGHT = 100; 
+			setTitle("kiloConverter"); 
+			setSize(WINDOW_LENGTH,WINDOW_HEIGHT); 
+			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
+			//now you need to build the panel
+			buildPnl(); 
+			
+			add(panel); 
+			setVisible(true); 
+			
+	}
+	
+	public void buildPnl() { 
+		messageLabel = new JLabel("Enter a distance " + "in Kilometers");
+		kiloTextField = new JTextField(10); calc = new JButton("Calculate");
+		calc.addActionListener(new calcButtonListener());
+		panel = new JPanel(); 
+		panel.add(messageLabel);panel.add(kiloTextField);panel.add(calc);
+		
+		
+		 
+	}
+private class calcButtonListener implements ActionListener{
+	//@param e The event Object. 
+	public void actionPerformed(ActionEvent e) {
+		final double CONVERSION = 0.6214; 
+		String input; double miles; 
+		input = kiloTextField.getText();
+		miles = Double.parseDouble(input);
+		miles = miles * CONVERSION;
+		JOptionPane.showMessageDialog(null, input + " kilometers is " + miles + " miles" );
+	}
+}
+	public static void main(String[]args) { 
+		new helloGui(); 
+	}
+
+}
