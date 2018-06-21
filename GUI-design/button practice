@@ -1,0 +1,48 @@
+package GuiDesign;
+import javax.swing.*;
+import java.awt.event.*; 
+public class listenerPractice extends JFrame {
+	private final int WINDOW_HEIGHT=400; JButton button1; JButton button2;
+	private final int WINDOW_LENGTH=400; JPanel panel; JButton button3;
+	JLabel label; //JLabel response; 
+	//AllbuttonListener listener = new AllbuttonListener(); 
+	public listenerPractice() {
+	setTitle("Practice");
+	setSize(WINDOW_LENGTH,WINDOW_HEIGHT); 
+	button1 = new JButton("Button 1"); 
+	button2 = new JButton("Button 2");
+	button3= new JButton("Button 3"); 
+	label = new JLabel("Click on one of these buttons");
+	button1.addActionListener(new listener());
+	button2.addActionListener(new listener()); 
+	button3.addActionListener(new listener());panel = new JPanel();
+	panel.add(label);panel.add(button1);panel.add(button2);panel.add(button3);//add(response);
+	add(panel);
+	setDefaultCloseOperation(EXIT_ON_CLOSE); 
+	setVisible(true); 
+	
+	
+	}
+	private class listener implements ActionListener{
+		public void actionPerformed (ActionEvent e) {
+		String action=	e.getActionCommand(); 
+		//Determine what was clicked and display 
+		if (action.equals("Button 1")) { 
+			JOptionPane.showMessageDialog(null, "You clicked on button 1");
+		}
+		if(action.equals("Button 2")) { 
+			JOptionPane.showMessageDialog(null, "You clicked on button 2"); 
+		}
+		if(action.equals("Button 3")) { 
+			JOptionPane.showMessageDialog(null, "You clicked on button 3");
+		}
+		}
+
+		}
+
+		public static void main(String[] args) { 
+		new listenerPractice(); 
+	}
+		
+	}
+
